@@ -16,6 +16,7 @@ call "C:\Program Files (x86)\Microsoft Visual Studio 14.0\VC\vcvarsall.bat" x86
 cd %PROJECT_DIR%
 call :downloadfile %OPEN_SSL_ZIP% file.gzip
 echo "Finished downloading opnessl extracting"
+echo "*******************************************************"
 7z  -o. x file.gzip -y
 dir .
 echo "Building opnessl "
@@ -31,6 +32,7 @@ echo "Finished building openssl"
 cd %PROJECT_DIR%
 call :downloadfile %DLIB_ZIP% file.zip
 echo "Finished downloading extracting"
+echo "*******************************************************"
 7z  -o.  x file.zip  -y
 dir .
 echo "Building dlib"
@@ -44,6 +46,7 @@ echo "Finished"
 cd %PROJECT_DIR%
 call :downloadfile %LIB_CURL_ZIP% file.gzip
 echo "Finished downloading libcurl extracting"
+echo "*******************************************************"
 7z  -o. x file.gzip -y
 echo "Building libcurl"
 dir %CURL%
@@ -58,6 +61,7 @@ cd %PROJECT_DIR%
 echo "Building app"
 ls *.sln > tmp  && echo msbuild /t:Build /p:Configuration=Debug /p:Platform=x86  > tmp2 && set /p myvar= < tmp && set /p myvar2= < tmp2 &&  echo %myvar2% %myvar% > builds.bat 
 call builds.bat  
+echo "*******************************************************"
 echo "Creating release zip"
 
 7z.exe a -r Firebender.zip Debug
