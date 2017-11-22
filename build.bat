@@ -23,7 +23,7 @@ echo "Building opnessl "
 cd  openssl*
 set "OPEN_SSL=%cd%"
 mkdir build
-perl Configure VC-WIN32 --prefix=%OPEN_SSL%\build enable-static-engine
+perl Configure VC-WIN32 no-asm --prefix=%OPEN_SSL%\build enable-static-engine
 call ms\do_ms.bat
 nmake -f ms/nt.mak
 nmake /f ms\nt.mak install
