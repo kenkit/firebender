@@ -14,21 +14,22 @@ call "C:\Program Files (x86)\Microsoft Visual Studio 14.0\VC\vcvarsall.bat" x86
 
 
 cd %PROJECT_DIR%
-call :downloadfile %OPEN_SSL_ZIP% file.gzip
+call :downloadfile %OPEN_SSL_ZIP% openssl-1.0.2m.tar.gz
 echo "Finished downloading opnessl extracting"
 echo "*******************************************************"
-7z  -o. x file.gzip -y
+7z  -o. x openssl-1.0.2m.tar.gz -y
 dir .
 echo "Building opnessl "
 cd  openssl*
 set "OPEN_SSL=%cd%"
-mkdir %OPEN_SSL%\build
+mkdir build
 perl Configure VC-WIN32 --prefix=%OPEN_SSL%\build enable-static-engine
 call ms\do_ms.bat
 nmake -f ms/nt.mak
 nmake /f ms\nt.mak install
 echo "Finished building openssl"
 
+echo "DOwnloading DLIB"
 cd %PROJECT_DIR%
 call :downloadfile %DLIB_ZIP% file.zip
 echo "Finished downloading extracting"
@@ -44,15 +45,15 @@ msbuild INSTALL.vcxproj /p:Configuration=Debug /p:Platform=x86
 echo "Finished"
 
 cd %PROJECT_DIR%
-call :downloadfile %LIB_CURL_ZIP% file.gzip
+call :downloadfile %LIB_CURL_ZIP% curl-7.56.1.zip  
 echo "Finished downloading libcurl extracting"
 echo "*******************************************************"
-7z  -o. x file.gzip -y
+7z  -o. x curl-7.56.1.zip   -y
 echo "Building libcurl"
 dir %CURL%
 Set RTLIBCFG=static
-mkdir %CURL%\build
-cd %CURL%\build
+cd curl*
+mkdir build
 nmake /f Makefile.vc mode=static VC=14 MACHINE=x86 DEBUG=no
 echo "Finished"
 
