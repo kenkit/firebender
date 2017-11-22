@@ -17,7 +17,7 @@ cd %PROJECT_DIR%
 call :downloadfile %OPEN_SSL_ZIP% openssl-1.0.2m.tar.gz
 echo "Finished downloading opnessl extracting"
 echo "*******************************************************"
-7z  -o. x openssl-1.0.2m.tar.gz -y
+7z  -o. x openssl-1.0.2m.tar.gz -y  && 7z  -o. x   openssl-1.0.2m.tar -y 
 dir .
 echo "Building opnessl "
 cd  openssl*
@@ -31,13 +31,14 @@ echo "Finished building openssl"
 
 echo "DOwnloading DLIB"
 cd %PROJECT_DIR%
-call :downloadfile %DLIB_ZIP% file.zip
+call :downloadfile %DLIB_ZIP% dlib-19.7.zip 
 echo "Finished downloading extracting"
 echo "*******************************************************"
-7z  -o.  x file.zip  -y
+7z  -o.  x dlib-19.7.zip   -y
 dir .
 echo "Building dlib"
-dir  %DLIB_DIR%
+dir  cd dlib*
+set "DLIB_DIR=%cd%"
 mkdir %DLIB_DIR%\build
 cd %DLIB_DIR%\build
 cmake ..
@@ -48,7 +49,7 @@ cd %PROJECT_DIR%
 call :downloadfile %LIB_CURL_ZIP% curl-7.56.1.zip  
 echo "Finished downloading libcurl extracting"
 echo "*******************************************************"
-7z  -o. x curl-7.56.1.zip   -y
+7z  -o. x curl-7.56.1.zip   -y 
 echo "Building libcurl"
 dir %CURL%
 Set RTLIBCFG=static
