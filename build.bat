@@ -17,6 +17,7 @@ call :downloadfile %LIB_CURL_ZIP% %CURL%\file.zip
 echo "Finished downloading extracting"
 7z  -o%DLIB_DIR%  x %DLIB_DIR%\file.zip  -y
 echo "Building dlib"
+dir  %DLIB_DIR%
 mkdir %DLIB_DIR%\build
 cd %DLIB_DIR%\build
 cmake ..
@@ -25,6 +26,7 @@ echo "Finished"
 echo "Finished downloading opnessl extracting"
 7z  -o%OPEN_SSL%  x %OPEN_SSL%\file.zip  -y
 echo "Building dlib"
+dir %OPEN_SSL%
 mkdir %OPEN_SSL%\build
 cd %OPEN_SSL%\build
 nmake /f Makefile.vc mode=static VC=14 DEBUG=yes
@@ -33,6 +35,7 @@ echo "Finished building openssl"
 echo "Finished downloading libcurl extracting"
 7z  -o%CURL%  x %CURL%\file.zip  -y
 echo "Building libcurl"
+dir %CURL%
 Set RTLIBCFG=static
 mkdir %CURL%\build
 cd %CURL%\build
@@ -41,7 +44,7 @@ msbuild INSTALL.vcxproj
 echo "Finished"
 
 
-cd PROJECT_DIR 
+cd %PROJECT_DIR% 
 echo "Building app"
 ls *.sln > tmp  && echo msbuild /t:Build /p:Configuration=Debug /p:Platform=x86  > tmp2 && set /p myvar= < tmp && set /p myvar2= < tmp2 &&  echo %myvar2% %myvar% > builds.bat 
 call builds.bat  
