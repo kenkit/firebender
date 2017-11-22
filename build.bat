@@ -22,7 +22,7 @@ dir %CURL%
 cd %CURL%
 mkdir build
 cd build
-cmake .. -DBUILD_CURL_TESTS=BOOL:OFF  -DCMAKE_INSTALL_PREFIX=dist 
+cmake -DBUILD_CURL_TESTS=BOOL:OFF  -DCMAKE_INSTALL_PREFIX=dist ../
 msbuild curl.sln /p:Configuration=Debug /p:Platform="Win32" /m
 msbuild INSTALL.vcxproj /p:Configuration=Debug
 set CURL=%CURL%\dist
