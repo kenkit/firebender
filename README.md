@@ -15,7 +15,7 @@ Flamey Onions will be available on the clearnet in a week or so.
 Normally firebender will run and display status 1 while waiting for jobs.
 ![Firebend](https://i.imgur.com/2fLKzJU.jpg "Firebend")
 
-If Firebender stops updating with a status other than **1 **that, it means there were errors detected. Just press enter and check your keys and start again.
+If Firebender stops updating with a status other than **1 ** that, it means there were errors detected. Just press enter and check your keys and start again.
 
 I will add more info on the error codes as time goes by.
 
