@@ -2,8 +2,8 @@ set DLIB_ZIP=http://dlib.net/files/dlib-19.7.zip
 set OPEN_SSL_ZIP=https://www.openssl.org/source/openssl-1.0.2m.tar.gz
 set LIB_CURL_ZIP=https://curl.haxx.se/download/curl-7.56.1.zip  
 set "PROJECT_DIR=%cd%"
-set CURL=curl
-set OPEN_SSL=openssl
+set CURL=curl-7.56.1
+set OPEN_SSL=openssl-1.0.2m
 set DLIB_DIR=dlib-19.7
 
 if not exist %DLIB_DIR% mkdir %DLIB_DIR%
@@ -27,7 +27,7 @@ echo "Finished"
 echo "Finished downloading opnessl extracting"
 7z  -o. x file.zip  -y
 echo "Building opnessl "
-dir %OPEN_SSL%
+dir %OPEN_SSL%	
 mkdir %OPEN_SSL%\build
 cd %OPEN_SSL%\build
 cmake ..
