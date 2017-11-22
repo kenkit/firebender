@@ -14,9 +14,10 @@ if not exist %OPEN_SSL% mkdir %OPEN_SSL%
 
 
 cd %PROJECT_DIR%
-call :downloadfile %OPEN_SSL_ZIP% file.zip
+call :downloadfile %OPEN_SSL_ZIP% file.gzip
 echo "Finished downloading opnessl extracting"
-7z  -o. x file.zip  -y
+7z  -o. x file.gzip -y
+dir .
 echo "Building opnessl "
 cd  openssl*
 set "OPEN_SSL=%cd%"
@@ -31,6 +32,7 @@ cd %PROJECT_DIR%
 call :downloadfile %DLIB_ZIP% file.zip
 echo "Finished downloading extracting"
 7z  -o.  x file.zip  -y
+dir .
 echo "Building dlib"
 dir  %DLIB_DIR%
 mkdir %DLIB_DIR%\build
@@ -40,9 +42,9 @@ msbuild INSTALL.vcxproj /p:Configuration=Debug /p:Platform=x86
 echo "Finished"
 
 cd %PROJECT_DIR%
-call :downloadfile %LIB_CURL_ZIP% file.zip
+call :downloadfile %LIB_CURL_ZIP% file.gzip
 echo "Finished downloading libcurl extracting"
-7z  -o. x file.zip  -y
+7z  -o. x file.gzip -y
 echo "Building libcurl"
 dir %CURL%
 Set RTLIBCFG=static
