@@ -23,6 +23,7 @@ cd %CURL%
 mkdir build
 cd build
 cmake ..  -DCMAKE_INSTALL_PREFIX:PATH=%CURL%\build\Release
+msbuild curl.sln /p:Configuration=Debug p:/Platform=x86
 msbuild INSTALL.vcxproj /p:Configuration=Debug p:/Platform=x86
 cp  %CURL%\build\Release\bin\libcurl.dll %PROJECT_DIR%\Debug
 set CURL=%CURL%\build\Release\
