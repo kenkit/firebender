@@ -5,7 +5,7 @@ set "PROJECT_DIR=%cd%"
 set CURL=curl-7.56.1
 set OPENSSL_ROOT_DIR=openssl-1.0.2m
 set DLIB_DIR=dlib-19.7
-set BOOST_ROOT=C:\Libraries\boost_1_62_0
+set BOOST_ROOT=C:\Libraries\boost_1_60_0
 call "C:\Program Files (x86)\Microsoft Visual Studio 14.0\VC\vcvarsall.bat" x86 
 
 ::if not exist %DLIB_DIR% mkdir %DLIB_DIR%
@@ -20,13 +20,14 @@ echo "*******************************************************"
 echo "Building libcurl"
 dir %CURL%
 cd %CURL%
-mkdir build
-cd build
+::mkdir build
+::cd build
 ::cmake -D BUILD_CURL_TESTS=BOOL:OFF  -D CMAKE_INSTALL_PREFIX=%CURL%\dist ../
 :::msbuild curl.sln /p:Configuration=Debug /p:Platform="Win32" /m
 ::msbuild INSTALL.vcxproj /p:Configuration=Debug
-set CURL=%CURL%
-cp  %CURL%\bin\libcurl.dll %PROJECT_DIR%\Debug
+::set CURL=%CURL%
+cd %PROJECT_DIR%
+cp  %CURL%\bin\libcurl.dll Debug
 
 echo "Finished"
 
