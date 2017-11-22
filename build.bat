@@ -3,14 +3,14 @@ set OPEN_SSL_ZIP=https://www.openssl.org/source/openssl-1.0.2m.tar.gz
 set LIB_CURL_ZIP=https://curl.haxx.se/download/curl-7.56.1.zip  
 set "PROJECT_DIR=%cd%"
 set CURL=curl-7.56.1
-set OPEN_SSL=openssl-1.0.2m
+set OPENSSL_ROOT_DIR=openssl-1.0.2m
 set DLIB_DIR=dlib-19.7
 set BOOST_ROOT=C:\Libraries\boost_1_62_0
 call "C:\Program Files (x86)\Microsoft Visual Studio 14.0\VC\vcvarsall.bat" x86 
 
 ::if not exist %DLIB_DIR% mkdir %DLIB_DIR%
 ::if not exist %CURL% mkdir %CURL%
-::if not exist %OPEN_SSL% mkdir %OPEN_SSL%
+::if not exist %OPENSSL_ROOT_DIR% mkdir %OPENSSL_ROOT_DIR%
 
 cd %PROJECT_DIR%
 call :downloadfile %LIB_CURL_ZIP% curl-7.56.1.zip  
@@ -22,7 +22,7 @@ dir %CURL%
 cd %CURL%
 mkdir build
 cd build
-cmake ..  -DCMAKE_INSTALL_PREFIX=dist -DBUILD_CURL_TESTS=BOOL:OFF 
+cmake ..  -DCMAKE_INSTALL_PREFIX=dist -D BUILD_CURL_TESTS=BOOL:OFF 
 msbuild curl.sln /p:Configuration=Debug /p:Platform="Win32" /m
 msbuild INSTALL.vcxproj /p:Configuration=Debug
 set CURL=%CURL%\dist
@@ -40,15 +40,17 @@ echo "*******************************************************"
 dir .
 echo "Building opnessl "
 cd  openssl*
-set "OPEN_SSL=%cd%"
+set "OPENSSL_ROOT_DIR=%cd%"
 mkdir build
-perl Configure VC-WIN32 no-asm --prefix=%OPEN_SSL%\build enable-static-engine
+perl Configure VC-WIN32 no-asm --prefix=%OPENSSL_ROOT_DIR%\build enable-static-engine
 ::call ms\do_ms.bat
 ::nmake -f ms/nt.mak
 ::nmake /f ms\nt.mak install
 echo "Finished building openssl"
-cd %OPEN_SSL%\build
-set "OPEN_SSL=%cd%"
+cd %OPENSSL_ROOT_DIR%\build
+set "OPENSSL_ROOT_DIR=%cd%"
+set OPENSSL_INCLUDE_DIR=%OPENSSL_ROOT_DIR%\build\include
+set OPENSSL_LIBRARY_DIR=%OPENSSL_ROOT_DIR%\build\lib
 
 echo "DOwnloading DLIB"
 cd %PROJECT_DIR%
