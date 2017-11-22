@@ -53,10 +53,18 @@ echo "*******************************************************"
 echo "Building libcurl"
 dir %CURL%
 Set RTLIBCFG=static
-cd curl*
+cd %CURL%
 mkdir build
-nmake /f Makefile.vc mode=static VC=14 MACHINE=x86 DEBUG=no
+cd build
+cmake ..
+msbuild INSTALL.vcxproj /p:Configuration=Debug p:/Platform=x86
 echo "Finished"
+
+echo "Instlaling jsonpp"
+cd %PROJECT_DIR% 
+git clone https://github.com/nlohmann/json.git
+cd nlohmann
+set "NLOHOMANN_JSON=%cd%"
 
 
 cd %PROJECT_DIR% 
