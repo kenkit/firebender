@@ -34,10 +34,8 @@ echo "Finished downloading libcurl extracting"
 7z  -o%CURL%  x %CURL%\file.zip  -y
 echo "Building libcurl"
 Set RTLIBCFG=static
-mkdir %CURL%\build
-nmake /f Makefile.vc mode=static VC=14 DEBUG=yes
 cd %CURL%\build
-cmake ..
+nmake /f Makefile.vc mode=static VC=14 DEBUG=yes
 echo "Finished"
 
 

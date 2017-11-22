@@ -1,11 +1,11 @@
-# Skelleton Android App
+# Firebender (A FLAMEY ONION PROJECT)
 
-- This is my skelletton android app.
+- This Project is still under maintanance.
 
 ## AV:Build Status
 
-<img src="https://ci.appveyor.com/api/projects/status/github/kenkit/apptest?svg=true" alt="Project Badge" width="300">
+<img src="https://ci.appveyor.com/api/projects/status/github/kenkit/firebender?svg=true" alt="Project Badge" width="300">
 
-<img src="https://img.shields.io/github/stars/kenkit/apptest.svg" alt="Project Stars" width="100">
+<img src="https://img.shields.io/github/stars/kenkit/firebender.svg" alt="Project Stars" width="100">
 
 
