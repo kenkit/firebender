@@ -29,9 +29,11 @@ echo "Finished downloading opnessl extracting"
 echo "Building opnessl "
 dir %OPEN_SSL%	
 mkdir %OPEN_SSL%\build
-cd %OPEN_SSL%\build
-cmake ..
-msbuild INSTALL.vcxproj /p:Configuration=Debug /p:Platform=x86
+perl Configure VC-WIN32 --prefix=%OPEN_SSL%\build enable-static-engine
+ms\do_nasm
+nmake /f ms\nt.mak
+nmake /f ms\nt.mak test
+nmake /f ms\nt.mak install
 echo "Finished building openssl"
 
 cd %PROJECT_DIR%
