@@ -4,18 +4,18 @@ set LIB_CURL_ZIP=https://curl.haxx.se/download/curl-7.56.1.zip
 set "PROJECT_DIR=%cd%"
 set CURL=curl
 set OPEN_SSL=openssl
-set DLIB_DIR=dlib
+set DLIB_DIR=dlib-19.7
 
 if not exist %DLIB_DIR% mkdir %DLIB_DIR%
 if not exist %CURL% mkdir %CURL%
 if not exist %OPEN_SSL% mkdir %OPEN_SSL%
 
-call :downloadfile %DLIB_ZIP% %DLIB_DIR%\file.zip
+call :downloadfile %DLIB_ZIP% file.zip
 call :downloadfile %OPEN_SSL_ZIP% %OPEN_SSL%\file.zip
 call :downloadfile %LIB_CURL_ZIP% %CURL%\file.zip
 
 echo "Finished downloading extracting"
-7z  -o%DLIB_DIR%  x %DLIB_DIR%\file.zip  -y
+7z  -o.  x file.zip  -y
 echo "Building dlib"
 dir  %DLIB_DIR%
 mkdir %DLIB_DIR%\build
