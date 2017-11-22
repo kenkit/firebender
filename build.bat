@@ -20,12 +20,9 @@ echo "*******************************************************"
 echo "Building libcurl"
 dir %CURL%
 cd %CURL%
-::mkdir build
-::cd build
-::cmake -D BUILD_CURL_TESTS=BOOL:OFF  -D CMAKE_INSTALL_PREFIX=%CURL%\dist ../
-:::msbuild curl.sln /p:Configuration=Debug /p:Platform="Win32" /m
-::msbuild INSTALL.vcxproj /p:Configuration=Debug
-::set CURL=%CURL%
+cd winbuild
+nmake /f Makefile.vc mode=static VC=14
+set CURL=%CURL%\builds\libcurl-vc14-x86-release-static-ipv6-sspi-winssl
 cd %PROJECT_DIR%
 cp  %CURL%\bin\libcurl.dll Debug
 
