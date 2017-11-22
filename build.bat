@@ -27,15 +27,17 @@ echo "Finished downloading opnessl extracting"
 echo "Building dlib"
 mkdir %OPEN_SSL%\build
 cd %OPEN_SSL%\build
-cmake ..
-echo "Finished"
+nmake /f Makefile.vc mode=static VC=14 DEBUG=yes
+echo "Finished building openssl"
 
 echo "Finished downloading libcurl extracting"
 7z  -o%CURL%  x %CURL%\file.zip  -y
 echo "Building libcurl"
 Set RTLIBCFG=static
+mkdir %CURL%\build
 cd %CURL%\build
-nmake /f Makefile.vc mode=static VC=14 DEBUG=yes
+cmake ../ -g 
+msbuild INSTALL.vcxproj
 echo "Finished"
 
 
