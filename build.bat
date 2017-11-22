@@ -1,6 +1,6 @@
 set DLIB_ZIP=http://dlib.net/files/dlib-19.7.zip 
 set OPEN_SSL_ZIP=https://www.openssl.org/source/openssl-1.0.2m.tar.gz
-set LIB_CURL_ZIP=https://s3-us-west-2.amazonaws.com/deaddevice/curl-7.56.1.zip
+set LIB_CURL_ZIP=https://curl.haxx.se/download/curl-7.56.1.zip
 set "PROJECT_DIR=%cd%"
 set CURL=curl-7.56.1
 set OPENSSL_ROOT_DIR=openssl-1.0.2m
