@@ -23,15 +23,15 @@ cmake ..
 echo "Finished"
 
 echo "Finished downloading opnessl extracting"
-7z  -o%OPEN_SSL_ZIP%  x %OPEN_SSL_ZIP%\file.zip  -y
+7z  -o%OPEN_SSL%  x %OPEN_SSL%\file.zip  -y
 echo "Building dlib"
-mkdir %OPEN_SSL_ZIP%\build
-cd %OPEN_SSL_ZIP%\build
+mkdir %OPEN_SSL%\build
+cd %OPEN_SSL%\build
 cmake ..
 echo "Finished"
 
 echo "Finished downloading libcurl extracting"
-7z  -o%LIB_CURL_ZIP%  x %CURL%\file.zip  -y
+7z  -o%CURL%  x %CURL%\file.zip  -y
 echo "Building libcurl"
 Set RTLIBCFG=static
 mkdir %CURL%\build
@@ -47,7 +47,7 @@ ls *.sln > tmp  && echo msbuild /t:Build /p:Configuration=Debug /p:Platform=x86 
 call builds.bat  
 echo "Creating release zip"
 
-call "C:\Program Files\7-Zip\7z.exe" a -r Firebender.zip Debug
+7z.exe a -r Firebender.zip Debug
 
 :downloadfile
 :: ----------------------------------------------------------------------
