@@ -21,16 +21,14 @@ echo "Building libcurl"
 dir %CURL%
 cd %CURL%
 cd winbuild
-nmake /f Makefile.vc mode=static VC=14
+nmake /f Makefile.vc mode=dll VC=14
 cd ..\builds
 set "CURL=%cd%"
-cp  %CURL%\bin\libcurl.dll Debug
-
-echo "Finished"
-
-
 
 cd %PROJECT_DIR%
+cp  %CURL%\bin\libcurl.dll Debug
+echo "Finished"
+
 call :downloadfile %OPEN_SSL_ZIP% openssl-1.0.2m.tar.gz
 echo "Finished downloading opnessl extracting"
 echo "*******************************************************"
