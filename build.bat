@@ -28,6 +28,8 @@ call ms\do_ms.bat
 nmake -f ms/nt.mak
 nmake /f ms\nt.mak install
 echo "Finished building openssl"
+cd %OPEN_SSL%\build
+set "OPEN_SSL=%cd%"
 
 echo "DOwnloading DLIB"
 cd %PROJECT_DIR%
@@ -52,7 +54,6 @@ echo "*******************************************************"
 7z  -o. x curl-7.56.1.zip   -y 
 echo "Building libcurl"
 dir %CURL%
-Set RTLIBCFG=static
 cd %CURL%
 mkdir build
 cd build
@@ -63,7 +64,7 @@ echo "Finished"
 echo "Instlaling jsonpp"
 cd %PROJECT_DIR% 
 git clone https://github.com/nlohmann/json.git
-cd nlohmann
+cd json\src
 set "NLOHOMANN_JSON=%cd%"
 
 
