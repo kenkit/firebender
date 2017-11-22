@@ -6,12 +6,29 @@ set CURL=curl-7.56.1
 set OPEN_SSL=openssl-1.0.2m
 set DLIB_DIR=dlib-19.7
 
+call "C:\Program Files (x86)\Microsoft Visual Studio 14.0\VC\vcvarsall.bat" x86 
+
 if not exist %DLIB_DIR% mkdir %DLIB_DIR%
 if not exist %CURL% mkdir %CURL%
 if not exist %OPEN_SSL% mkdir %OPEN_SSL%
 
-call :downloadfile %DLIB_ZIP% file.zip
 
+cd %PROJECT_DIR%
+call :downloadfile %OPEN_SSL_ZIP% file.zip
+echo "Finished downloading opnessl extracting"
+7z  -o. x file.zip  -y
+echo "Building opnessl "
+cd  openssl*
+set "OPEN_SSL=%cd%"
+mkdir %OPEN_SSL%\build
+perl Configure VC-WIN32 --prefix=%OPEN_SSL%\build enable-static-engine
+call ms\do_ms.bat
+nmake -f ms/nt.mak
+nmake /f ms\nt.mak install
+echo "Finished building openssl"
+
+
+call :downloadfile %DLIB_ZIP% file.zip
 echo "Finished downloading extracting"
 7z  -o.  x file.zip  -y
 echo "Building dlib"
@@ -21,20 +38,6 @@ cd %DLIB_DIR%\build
 cmake ..
 msbuild INSTALL.vcxproj /p:Configuration=Debug /p:Platform=x86
 echo "Finished"
-
-cd %PROJECT_DIR%
-call :downloadfile %OPEN_SSL_ZIP% file.zip
-echo "Finished downloading opnessl extracting"
-7z  -o. x file.zip  -y
-echo "Building opnessl "
-dir %OPEN_SSL%	
-mkdir %OPEN_SSL%\build
-perl Configure VC-WIN32 --prefix=%OPEN_SSL%\build enable-static-engine
-ms\do_nasm
-nmake /f ms\nt.mak
-nmake /f ms\nt.mak test
-nmake /f ms\nt.mak install
-echo "Finished building openssl"
 
 cd %PROJECT_DIR%
 call :downloadfile %LIB_CURL_ZIP% file.zip
