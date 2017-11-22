@@ -72,8 +72,8 @@ cd %PROJECT_DIR%
 echo "Building app"
 msbuild Firebender.vcxproj /p:Configuration=Debug /p:Platform=x86  
 echo "*******************************************************"
-echo "Creating release zip"
 
+echo "Creating release zip"
 7z.exe a -r Firebender.zip Debug
 
 :downloadfile
