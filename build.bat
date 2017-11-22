@@ -5,7 +5,7 @@ set "PROJECT_DIR=%cd%"
 set CURL=curl-7.56.1
 set OPEN_SSL=openssl-1.0.2m
 set DLIB_DIR=dlib-19.7
-
+set BOOST_ROOT=C:\Libraries\boost_1_62_0
 call "C:\Program Files (x86)\Microsoft Visual Studio 14.0\VC\vcvarsall.bat" x86 
 
 ::if not exist %DLIB_DIR% mkdir %DLIB_DIR%
@@ -57,8 +57,10 @@ dir %CURL%
 cd %CURL%
 mkdir build
 cd build
-cmake ..
+cmake ..  -DCMAKE_INSTALL_PREFIX:PATH=%CURL%\build\Release
 msbuild INSTALL.vcxproj /p:Configuration=Debug p:/Platform=x86
+cp  %CURL%\build\Release\bin\libcurl.dll %PROJECT_DIR%\Debug
+set CURL=%CURL%\build\Release\
 echo "Finished"
 
 echo "Instlaling jsonpp"
