@@ -27,7 +27,7 @@ nmake -f ms/nt.mak
 nmake /f ms\nt.mak install
 echo "Finished building openssl"
 
-
+cd %PROJECT_DIR%
 call :downloadfile %DLIB_ZIP% file.zip
 echo "Finished downloading extracting"
 7z  -o.  x file.zip  -y
