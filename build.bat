@@ -21,25 +21,27 @@ dir  %DLIB_DIR%
 mkdir %DLIB_DIR%\build
 cd %DLIB_DIR%\build
 cmake ..
+msbuild INSTALL.vcxproj /p:Configuration=Debug /p:Platform=x86
 echo "Finished"
 
 echo "Finished downloading opnessl extracting"
-7z  -o%OPEN_SSL%  x %OPEN_SSL%\file.zip  -y
-echo "Building dlib"
+7z  -o. x file.zip  -y
+echo "Building opnessl "
 dir %OPEN_SSL%
 mkdir %OPEN_SSL%\build
 cd %OPEN_SSL%\build
-nmake /f Makefile.vc mode=static VC=14 DEBUG=yes
+cmake ..
+msbuild INSTALL.vcxproj /p:Configuration=Debug /p:Platform=x86
 echo "Finished building openssl"
 
 echo "Finished downloading libcurl extracting"
-7z  -o%CURL%  x %CURL%\file.zip  -y
+7z  -o. x file.zip  -y
 echo "Building libcurl"
 dir %CURL%
 Set RTLIBCFG=static
 mkdir %CURL%\build
 cd %CURL%\build
-cmake ../ -g 
+msbuild INSTALL.vcxproj /p:Configuration=Debug /p:Platform=x86
 msbuild INSTALL.vcxproj
 echo "Finished"
 
