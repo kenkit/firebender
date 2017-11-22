@@ -22,6 +22,7 @@ cmake ..
 msbuild INSTALL.vcxproj /p:Configuration=Debug /p:Platform=x86
 echo "Finished"
 
+cd %PROJECT_DIR%
 call :downloadfile %OPEN_SSL_ZIP% file.zip
 echo "Finished downloading opnessl extracting"
 7z  -o. x file.zip  -y
@@ -33,7 +34,7 @@ cmake ..
 msbuild INSTALL.vcxproj /p:Configuration=Debug /p:Platform=x86
 echo "Finished building openssl"
 
-
+cd %PROJECT_DIR%
 call :downloadfile %LIB_CURL_ZIP% file.zip
 echo "Finished downloading libcurl extracting"
 7z  -o. x file.zip  -y
