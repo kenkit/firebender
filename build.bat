@@ -63,9 +63,9 @@ dir .
 echo "Building dlib"
 mkdir %DLIB_DIR%\build
 cd %DLIB_DIR%\build
-cmake ..  -DCMAKE_INSTALL_PREFIX=%DLIB_DIR%\dist
+cmake -DCMAKE_INSTALL_PREFIX=%DLIB_DIR%\dist ..\  
 msbuild INSTALL.vcxproj /p:Configuration=Debug /p:Platform=x86 /m
-cd %DLIB_DIR%\dist
+cd %DLIB_DIR%\dist 
 set "DLIB_DIR=%cd%"
 echo "Finished"
 
