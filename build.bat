@@ -5,7 +5,7 @@ set "PROJECT_DIR=%cd%"
 set CURL=curl-7.56.1
 set OPENSSL_ROOT_DIR=openssl-1.0.2m
 set DLIB_DIR=dlib-19.7
-set BOOST_ROOT=C:\Libraries\boost_1_60_0
+set BOOST_ROOT= C:/Libraries/boost_1_59_0
 call "C:\Program Files (x86)\Microsoft Visual Studio 14.0\VC\vcvarsall.bat" x86 
 
 ::if not exist %DLIB_DIR% mkdir %DLIB_DIR%
