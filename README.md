@@ -9,6 +9,8 @@
 After downloading please update your tor **socks port** in Firebender.cpp to point to your Tor clients port.
 
 After setting up the server address, open the **Api page** on our **server** and copy the contents of that **text box** to your **settings.json**.
+![](https://i.imgur.com/Rbb0UIn.jpg)
+
 
 Flamey Onions will be available on the clearnet in a week or so.
 
