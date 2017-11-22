@@ -60,6 +60,8 @@ std::string scan_result;
 		curl_slist_append(slist1, ("api_secret: "+user_data.api_secret).c_str());
 		curl_slist_append(slist1, ("userhash: "+user_data.curr_user).c_str());
   hnd = curl_easy_init();
+  curl_easy_setopt(curl, CURLOPT_PROXY,"socks5h://localhost:9050");///CHANGE THIS TO MATCH YOUR TOR CLIENT PORT
+  curl_easy_setopt(curl, CURLOPT_PROXYTYPE, CURLPROXY_SOCKS5);
   curl_easy_setopt(hnd, CURLOPT_URL, user_data.url.c_str());
   curl_easy_setopt(hnd, CURLOPT_NOPROGRESS, 1L);
   curl_easy_setopt(hnd, CURLOPT_POSTFIELDS, user_data.json.c_str());
@@ -214,9 +216,9 @@ int status;
 user_data request_j,send_j;
 json settings = json::parse(settings_json);
 
-request_j.url="http://localhost:5002/json?type=get_job";
+request_j.url="http://flamyop4nnz27qnu.onion/json?type=get_job";
 request_j.connect_type=1;
-send_j.url="http://localhost:5002/json?type=submit_job";
+send_j.url="http://flamyop4nnz27qnu.onion/json?type=submit_job";
 send_j.connect_type=0;
 
 request_j.curr_user=settings["user_id"].get<std::string>();
