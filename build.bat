@@ -22,9 +22,9 @@ dir %CURL%
 cd %CURL%
 cd winbuild
 nmake /f Makefile.vc mode=static VC=14
-set CURL=%CURL%\builds\libcurl-vc14-x86-release-static-ipv6-sspi-winssl
+cd ../builds
 cd %PROJECT_DIR%
-cp  %CURL%\bin\libcurl.dll Debug
+cp  %CURL%/bin/libcurl.dll Debug
 
 echo "Finished"
 
