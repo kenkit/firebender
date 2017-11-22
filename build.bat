@@ -70,8 +70,7 @@ set "NLOHOMANN_JSON=%cd%"
 
 cd %PROJECT_DIR% 
 echo "Building app"
-ls *.sln > tmp  && echo msbuild /t:Build /p:Configuration=Debug /p:Platform=x86  > tmp2 && set /p myvar= < tmp && set /p myvar2= < tmp2 &&  echo %myvar2% %myvar% > builds.bat 
-call builds.bat  
+msbuild Firebender.vcxproj /p:Configuration=Debug /p:Platform=x86  
 echo "*******************************************************"
 echo "Creating release zip"
 
