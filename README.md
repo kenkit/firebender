@@ -1,6 +1,13 @@
 # Firebender (A Flamey Onion Client)
 
-- Automatic builds are not available yet. But am working on  this.
+## AV:Build Status
+
+<img src="https://ci.appveyor.com/api/projects/status/github/kenkit/firebender?svg=true" alt="Project Badge" width="300">
+
+<img src="https://img.shields.io/github/stars/kenkit/firebender.svg" alt="Project Stars" width="100">
+
+
+- Automatic builds are not available yet. But am working on  this atm.
 
 - Please build by yourself for now.
 
@@ -35,11 +42,5 @@ Normally firebender will run and display status 1 while waiting for jobs.
 Flamey Onions will be available on the clearnet in a week or so.
 
 **I have my hands full, I also have to work on the main system. The client works for now improvements to this code are accepted and will be merged if they are okay.**
-
-## AV:Build Status
-
-<img src="https://ci.appveyor.com/api/projects/status/github/kenkit/firebender?svg=true" alt="Project Badge" width="300">
-
-<img src="https://img.shields.io/github/stars/kenkit/firebender.svg" alt="Project Stars" width="100">
 
 
