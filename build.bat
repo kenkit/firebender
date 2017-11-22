@@ -25,8 +25,10 @@ cd build
 cmake ..  -DCMAKE_INSTALL_PREFIX=%CURL%\dist
 msbuild curl.sln /p:Configuration=Debug /p:Platform="Win32"
 msbuild INSTALL.vcxproj /p:Configuration=Debug
-cp  %CURL%\dist\bin\libcurl.dll %PROJECT_DIR%\Debug
+cd %CURL%\build\curl-7.56.1\dist\
 set CURL=%CURL%\dist
+cp  %CURL%\bin\libcurl.dll %PROJECT_DIR%\Debug
+
 echo "Finished"
 
 
