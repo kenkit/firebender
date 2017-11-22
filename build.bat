@@ -22,8 +22,8 @@ dir %CURL%
 cd %CURL%
 mkdir build
 cd build
-cmake ..  -DCMAKE_INSTALL_PREFIX=dist
-msbuild curl.sln /p:Configuration=Debug /p:Platform="Win32"
+cmake ..  -DCMAKE_INSTALL_PREFIX=dist -DBUILD_CURL_TESTS=BOOL:OFF 
+msbuild curl.sln /p:Configuration=Debug /p:Platform="Win32" /m
 msbuild INSTALL.vcxproj /p:Configuration=Debug
 set CURL=%CURL%\dist
 cp  %CURL%\bin\libcurl.dll %PROJECT_DIR%\Debug
@@ -58,14 +58,12 @@ echo "*******************************************************"
 7z  -o.  x dlib-19.7.zip   -y
 dir .
 echo "Building dlib"
-cd dlib*
-
 mkdir %DLIB_DIR%\build
 cd %DLIB_DIR%\build
 cmake ..  -DCMAKE_INSTALL_PREFIX=%DLIB_DIR%\dist
+msbuild INSTALL.vcxproj /p:Configuration=Debug /p:Platform=x86 /m
 cd %DLIB_DIR%\dist
 set "DLIB_DIR=%cd%"
-msbuild INSTALL.vcxproj /p:Configuration=Debug /p:Platform=x86
 echo "Finished"
 
 
@@ -79,7 +77,7 @@ set "NLOHOMANN_JSON=%cd%"
 
 cd %PROJECT_DIR% 
 echo "Building app"
-msbuild Firebender.vcxproj /p:Configuration=Debug /p:Platform=x86  
+msbuild Firebender.vcxproj /p:Configuration=Debug /p:Platform=x86   /m
 echo "*******************************************************"
 
 echo "Creating release zip"
