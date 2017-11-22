@@ -11,10 +11,6 @@ After downloading please update your tor **socks port** in Firebender.cpp to poi
 After setting up the server address, open the **Api page** on our **server** and copy the contents of that **text box** to your **settings.json**.
 ![](https://i.imgur.com/Rbb0UIn.jpg)
 
-
-Flamey Onions will be available on the clearnet in a week or so.
-
-Normally firebender will run and display status 1 while waiting for jobs.
 ![Firebend](https://i.imgur.com/2fLKzJU.jpg "Firebend")
 
 If Firebender stops updating with a status other than **1** that, it means there were errors detected. Just press enter and check your keys and start again.
@@ -28,8 +24,15 @@ This project was built using the following lib
 - Boost
 - Libcurl
 - dlib
+- jsonpp
 
-After building the above open the project file and update your dependancies and build.
+Other tools need to use it are
+- [Eschalot](https://github.com/ReclaimYourPrivacy/eschalot "Eschalot")
+
+After building the above open the project file and update your dependancies in visual studio  and build.
+Also download eschalot build and put it in the same directory firebender.exe was generated.
+Normally firebender will run and display status 1 while waiting for jobs.
+Flamey Onions will be available on the clearnet in a week or so.
 
 **I have my hands full, I also have to work on the main system. The client works for now improvements to this code are accepted and will be merged if they are okay.**
 
