@@ -22,9 +22,9 @@ dir %CURL%
 cd %CURL%
 cd winbuild
 nmake /f Makefile.vc mode=static VC=14
-cd ../builds
-cd %PROJECT_DIR%
-cp  %CURL%/bin/libcurl.dll Debug
+cd ..\builds
+set "CURL=%cd%"
+cp  %CURL%\bin\libcurl.dll Debug
 
 echo "Finished"
 
