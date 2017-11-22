@@ -37,7 +37,7 @@ echo "*******************************************************"
 7z  -o.  x dlib-19.7.zip   -y
 dir .
 echo "Building dlib"
-dir  cd dlib*
+cd dlib*
 set "DLIB_DIR=%cd%"
 mkdir %DLIB_DIR%\build
 cd %DLIB_DIR%\build
