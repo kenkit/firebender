@@ -11,8 +11,6 @@ if not exist %CURL% mkdir %CURL%
 if not exist %OPEN_SSL% mkdir %OPEN_SSL%
 
 call :downloadfile %DLIB_ZIP% file.zip
-call :downloadfile %OPEN_SSL_ZIP% %OPEN_SSL%\file.zip
-call :downloadfile %LIB_CURL_ZIP% %CURL%\file.zip
 
 echo "Finished downloading extracting"
 7z  -o.  x file.zip  -y
@@ -24,6 +22,7 @@ cmake ..
 msbuild INSTALL.vcxproj /p:Configuration=Debug /p:Platform=x86
 echo "Finished"
 
+call :downloadfile %OPEN_SSL_ZIP% file.zip
 echo "Finished downloading opnessl extracting"
 7z  -o. x file.zip  -y
 echo "Building opnessl "
@@ -34,6 +33,8 @@ cmake ..
 msbuild INSTALL.vcxproj /p:Configuration=Debug /p:Platform=x86
 echo "Finished building openssl"
 
+
+call :downloadfile %LIB_CURL_ZIP% file.zip
 echo "Finished downloading libcurl extracting"
 7z  -o. x file.zip  -y
 echo "Building libcurl"
