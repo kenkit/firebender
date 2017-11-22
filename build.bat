@@ -8,9 +8,9 @@ set DLIB_DIR=dlib-19.7
 
 call "C:\Program Files (x86)\Microsoft Visual Studio 14.0\VC\vcvarsall.bat" x86 
 
-if not exist %DLIB_DIR% mkdir %DLIB_DIR%
-if not exist %CURL% mkdir %CURL%
-if not exist %OPEN_SSL% mkdir %OPEN_SSL%
+::if not exist %DLIB_DIR% mkdir %DLIB_DIR%
+::if not exist %CURL% mkdir %CURL%
+::if not exist %OPEN_SSL% mkdir %OPEN_SSL%
 
 
 cd %PROJECT_DIR%
