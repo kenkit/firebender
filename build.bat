@@ -22,7 +22,7 @@ dir %CURL%
 cd %CURL%
 mkdir build
 cd build
-cmake ..  DCMAKE_INSTALL_PREFIX=%CURL%\dist
+cmake ..  -DCMAKE_INSTALL_PREFIX=%CURL%\dist
 msbuild curl.sln /p:Configuration=Debug /p:Platform="Win32"
 msbuild INSTALL.vcxproj /p:Configuration=Debug
 cp  %CURL%\dist\bin\libcurl.dll %PROJECT_DIR%\Debug
@@ -58,10 +58,12 @@ echo "*******************************************************"
 dir .
 echo "Building dlib"
 cd dlib*
-set "DLIB_DIR=%cd%"
+
 mkdir %DLIB_DIR%\build
 cd %DLIB_DIR%\build
-cmake ..
+cmake ..  -DCMAKE_INSTALL_PREFIX=%DLIB_DIR%\dist
+cd %DLIB_DIR%\dist
+set "DLIB_DIR=%cd%"
 msbuild INSTALL.vcxproj /p:Configuration=Debug /p:Platform=x86
 echo "Finished"
 
