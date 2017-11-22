@@ -1,5 +1,7 @@
 # Firebender (A FLAMEY ONION PROJECT)
 
+- Please build by yourself for now.
+
 - This Project is still under maintanance.
 
 ## AV:Build Status
