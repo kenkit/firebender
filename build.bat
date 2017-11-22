@@ -12,6 +12,23 @@ call "C:\Program Files (x86)\Microsoft Visual Studio 14.0\VC\vcvarsall.bat" x86
 ::if not exist %CURL% mkdir %CURL%
 ::if not exist %OPEN_SSL% mkdir %OPEN_SSL%
 
+cd %PROJECT_DIR%
+call :downloadfile %LIB_CURL_ZIP% curl-7.56.1.zip  
+echo "Finished downloading libcurl extracting"
+echo "*******************************************************"
+7z  -o. x curl-7.56.1.zip   -y 
+echo "Building libcurl"
+dir %CURL%
+cd %CURL%
+mkdir build
+cd build
+cmake ..  -DCMAKE_INSTALL_PREFIX:PATH=%CURL%\build\Release
+msbuild INSTALL.vcxproj /p:Configuration=Debug p:/Platform=x86
+cp  %CURL%\build\Release\bin\libcurl.dll %PROJECT_DIR%\Debug
+set CURL=%CURL%\build\Release\
+echo "Finished"
+
+
 
 cd %PROJECT_DIR%
 call :downloadfile %OPEN_SSL_ZIP% openssl-1.0.2m.tar.gz
@@ -47,21 +64,7 @@ cmake ..
 msbuild INSTALL.vcxproj /p:Configuration=Debug /p:Platform=x86
 echo "Finished"
 
-cd %PROJECT_DIR%
-call :downloadfile %LIB_CURL_ZIP% curl-7.56.1.zip  
-echo "Finished downloading libcurl extracting"
-echo "*******************************************************"
-7z  -o. x curl-7.56.1.zip   -y 
-echo "Building libcurl"
-dir %CURL%
-cd %CURL%
-mkdir build
-cd build
-cmake ..  -DCMAKE_INSTALL_PREFIX:PATH=%CURL%\build\Release
-msbuild INSTALL.vcxproj /p:Configuration=Debug p:/Platform=x86
-cp  %CURL%\build\Release\bin\libcurl.dll %PROJECT_DIR%\Debug
-set CURL=%CURL%\build\Release\
-echo "Finished"
+
 
 echo "Instlaling jsonpp"
 cd %PROJECT_DIR% 
