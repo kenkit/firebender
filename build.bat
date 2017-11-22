@@ -48,8 +48,7 @@ dir %CURL%
 Set RTLIBCFG=static
 mkdir %CURL%\build
 cd %CURL%\build
-msbuild INSTALL.vcxproj /p:Configuration=Debug /p:Platform=x86
-msbuild INSTALL.vcxproj
+nmake /f Makefile.vc mode=static VC=14 MACHINE=x86 DEBUG=no
 echo "Finished"
 
 
