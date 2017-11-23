@@ -85,7 +85,8 @@ msbuild Firebender.vcxproj /p:Configuration=Debug /p:Platform=x86   /m
 echo "*******************************************************"
 
 echo "Creating release zip"
-7z.exe a -r Firebender.zip Debug 2> nul
+::7z.exe a -r Firebender.zip Debug 2> nul
+7z a  Firebender.zip Debug 
 
 :downloadfile
 :: ----------------------------------------------------------------------
