@@ -42,11 +42,18 @@ This project was built using the following lib
 - dlib
 - jsonpp
 
-Other tools need to use it are
+Other tools need to use it are.
+
+EDIT:I've just bundled my own version of eschalot, you can build your own if you want.
+
+
 - [Eschalot](https://github.com/ReclaimYourPrivacy/eschalot "Eschalot")
 
 After building the above open the project file and update your dependancies in visual studio  and build.
 Also download eschalot build and put it in the same directory firebender.exe was generated.
+
+EDIT:I've just bundled my own version of eschalot, you can build your own if you want.
+
 Normally firebender will run and display status 1 while waiting for jobs.
 Flamey Onions will be available on the clearnet in a week or so.
 
