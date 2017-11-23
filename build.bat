@@ -21,6 +21,28 @@ set PATH=%PATH%;C:/cygwin/bin
 
 cp c:\MinGW\bin\mingw32-make.exe c:\MinGW\bin\make.exe
 
+
+appveyor DownloadFile http://cygwin.com/setup-%CYG_ARCH%.exe -FileName setup.exe
+setup.exe -gqnNdO -R "%CYG_ROOT%" -s "%CYG_MIRROR%" -l "%CYG_CACHE%" -P make,git,gcc-core,gcc-g++,ocaml,ocaml-camlp4,ocaml-compiler-libs,libncurses-devel,unzip,libmpfr-devel,patch,flexdll,libglpk-devel,openssl-devel
+%CYG_ROOT%/bin/bash -lc "cygcheck -dc cygwin gcc-core
+echo "Instlaling eschalot"
+cd %PROJECT_DIR% 
+call git clone https://github.com/ReclaimYourPrivacy/eschalot.git
+cd eschalot
+bash -c make
+cd %PROJECT_DIR% 
+mv  eschalot\eschalot.exe Debug\
+mv  eschalot\worgen.exe Debug\
+mv  eschalot\nouns.txt Debug\
+mv  eschalot\results.txt Debug\
+mv  eschalot\top1000.txt Debug\
+mv  eschalot\top150adjectives.txt Debug\
+mv  eschalot\top400nouns.txt Debug\
+mv  eschalot\LICENSE Debug\
+
+
+
+
 cd %PROJECT_DIR%
 curl -f -L %LIB_CURL_ZIP% -o curl-7.56.1.zip  || exit 1
 echo "Finished downloading libcurl extracting"
@@ -76,31 +98,11 @@ cd ..\
 set DLIB_DIR=%DLIB_DIR%\build\dist
 echo "Finished"
 
-appveyor DownloadFile http://cygwin.com/setup-%CYG_ARCH%.exe -FileName setup.exe
-setup.exe -gqnNdO -R "%CYG_ROOT%" -s "%CYG_MIRROR%" -l "%CYG_CACHE%" -P make,git,gcc-core,gcc-g++,ocaml,ocaml-camlp4,ocaml-compiler-libs,libncurses-devel,unzip,libmpfr-devel,patch,flexdll,libglpk-devel,openssl-devel
-%CYG_ROOT%/bin/bash -lc "cygcheck -dc cygwin gcc-core
-
 echo "Instlaling jsonpp"
 cd %PROJECT_DIR% 
 call git clone https://github.com/nlohmann/json.git
 cd json\src
 set "NLOHOMANN_JSON=%cd%"
-
-echo "Instlaling eschalot"
-cd %PROJECT_DIR% 
-call git clone https://github.com/ReclaimYourPrivacy/eschalot.git
-cd eschalot
-make
-cd %PROJECT_DIR% 
-mv  eschalot\eschalot.exe Debug\
-mv  eschalot\worgen.exe Debug\
-mv  eschalot\nouns.txt Debug\
-mv  eschalot\results.txt Debug\
-mv  eschalot\top1000.txt Debug\
-mv  eschalot\top150adjectives.txt Debug\
-mv  eschalot\top400nouns.txt Debug\
-mv  eschalot\LICENSE Debug\
-
 
 
 cd %PROJECT_DIR% 
