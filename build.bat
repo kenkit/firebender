@@ -15,7 +15,7 @@ call "C:\Program Files (x86)\Microsoft Visual Studio 14.0\VC\vcvarsall.bat" x86
 ::if not exist %OPENSSL_ROOT_DIR% mkdir %OPENSSL_ROOT_DIR%
 
 cd %PROJECT_DIR%
-call :downloadfile %LIB_CURL_ZIP% curl-7.56.1.zip  
+curl -f -L %LIB_CURL_ZIP% -o curl-7.56.1.zip  || exit 1
 echo "Finished downloading libcurl extracting"
 echo "*******************************************************"
 call 7z  -o. x curl-7.56.1.zip   -y 
@@ -31,7 +31,8 @@ cd %PROJECT_DIR%
 mv  %CURL%\bin\libcurl.dll Debug\
 echo "Finished"
 
-call :downloadfile %OPEN_SSL_ZIP% openssl-1.0.2m.tar.gz
+
+curl -f -L %OPEN_SSL_ZIP% -o openssl-1.0.2m.tar.gz || exit 1
 echo "Finished downloading opnessl extracting"
 echo "*******************************************************"
 call 7z  -o. x openssl-1.0.2m.tar.gz -y  && 7z  -o. x   openssl-1.0.2m.tar -y 
@@ -52,7 +53,7 @@ set OPENSSL_LIBRARY_DIR=%OPENSSL_ROOT_DIR%\build\lib
 
 echo "DOwnloading DLIB"
 cd %PROJECT_DIR%
-call :downloadfile %DLIB_ZIP% dlib-19.7.zip 
+curl -f -L %DLIB_ZIP% -o dlib-19.7.zip  || exit 1
 echo "Finished downloading extracting"
 echo "*******************************************************"
 7z  -o.  x dlib-19.7.zip   -y
@@ -85,13 +86,6 @@ call msbuild Firebender.vcxproj /p:Configuration=Debug /p:Platform=x86   /m
 echo "*******************************************************"
 
 echo "Creating release zip"
-del Firebender.zip
-call zip -r Firebender.zip Debug
 
-:downloadfile
-:: ----------------------------------------------------------------------
-:: call :downloadfile <URL> <localfile>
-if not exist %2 (
-  curl -f -L %1 -o %2 || exit 1
-)
-goto :eof
+call 7z.exe a -r Firebender.zip Debug 
+
