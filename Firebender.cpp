@@ -303,7 +303,7 @@ dlib::sleep(1000);
 clear() ;
 std::cout<<"Connecting to server..."<<std::endl;
 while(1){
-	clear() ;
+	
 	int status=do_job(settings);
 	
 		if(status==1)
@@ -323,7 +323,7 @@ while(1){
 		}
 
 	dlib::sleep(2000);	
-
+	clear() ;	
 	if(status!=0&&status!=1)
 	break;
 	}
