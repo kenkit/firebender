@@ -121,5 +121,6 @@ echo "*******************************************************"
 
 echo "Creating release zip"
 dir Debug
-call 7z.exe a -r Firebender.zip C:\projects\firebender\Debug\
+del dlib-19.7
+call 7z.exe a -bb3 Firebender.zip Debug\ 
 
