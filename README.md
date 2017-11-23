@@ -9,18 +9,27 @@
 
 - Automatic builds are not available yet. But am working on  this atm.
 
-- Please build by yourself for now.
+- Automatic Builds are working.
 
+## [[DOWNLOAD]][1]
 
+Download the app and setup Tor to listen on port 9050 in your torc
 
-After downloading please update your tor **socks port** in Firebender.cpp to point to your Tor clients port.
+After setting up tor, open the **Api page** on our **server** and copy the contents of that **text box** to your **settings.json**.
 
-After setting up the server address, open the **Api page** on our **server** and copy the contents of that **text box** to your **settings.json**.
+Put settings.json in the same directory as **Firebender.exe**
+
 ![](https://i.imgur.com/Rbb0UIn.jpg)
+
+Then you have to either download or build **eschalot.exe** and put it in the same directory as **Firebender.exe**
+
+Then launch Firebender after starting tor.
 
 ![Firebend](https://i.imgur.com/2fLKzJU.jpg "Firebend")
 
-If Firebender stops updating with a status other than **1** that, it means there were errors detected. Just press enter and check your keys and start again.
+If **Firebender.exe** stops updating with a status other than **1** that, it means there were errors detected. Just press enter and check your keys and start again.
+
+If it crashes it means it failed to connect to our server.
 
 I will add more info on the error codes as time goes by.
 
@@ -44,3 +53,5 @@ Flamey Onions will be available on the clearnet in a week or so.
 **I have my hands full, I also have to work on the main system. The client works for now improvements to this code are accepted and will be merged if they are okay.**
 
 
+
+[1]: https://github.com/kenkit/firebender/releases "DOWNLOAD"
