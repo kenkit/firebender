@@ -24,12 +24,12 @@ cp c:\MinGW\bin\mingw32-make.exe c:\MinGW\bin\make.exe
 
 appveyor DownloadFile http://cygwin.com/setup-%CYG_ARCH%.exe -FileName setup.exe
 setup.exe -gqnNdO -R "%CYG_ROOT%" -s "%CYG_MIRROR%" -l "%CYG_CACHE%" -P make,git,gcc-core,gcc-g++,ocaml,ocaml-camlp4,ocaml-compiler-libs,libncurses-devel,unzip,libmpfr-devel,patch,flexdll,libglpk-devel,openssl-devel
-%CYG_ROOT%/bin/bash -lc "cygcheck -dc cygwin gcc-core
+%CYG_ROOT%/bin/bash -lc "cygcheck -dc cygwin gcc-core"
 echo "Instlaling eschalot"
 cd %PROJECT_DIR% 
 call git clone https://github.com/ReclaimYourPrivacy/eschalot.git
 cd eschalot
-bash -c make
+%CYG_ROOT%/bin/bash -c "make"
 cd %PROJECT_DIR% 
 mv  eschalot\eschalot.exe Debug\
 mv  eschalot\worgen.exe Debug\
