@@ -17,6 +17,10 @@ Download the app and setup Tor to listen on port 9050 in your torc
 
 After setting up tor, open the **Api page** on our **server** and copy the contents of that **text box** to your **settings.json**.
 
+Add your tor_port to the settings so that Firebender can connect through your tor client.
+
+USE THE EXISTING SETTINGS.JSON AS GUIDE
+
 Put settings.json in the same directory as **Firebender.exe**
 
 ![](https://i.imgur.com/Rbb0UIn.jpg)
