@@ -44,7 +44,7 @@ mingw32-make.exe mingw32-make.exe && mingw32-make.exe install
 cd dist 
 set "OPENSSL_ROOT_DIR=%cd%"
 set PATH=%PATH%;%OPENSSL_ROOT_DIR%/bin
-set LIB==%LIB=%;%OPENSSL_ROOT_DIR%/lib
+set LIB=%LIB=%;%OPENSSL_ROOT_DIR%/lib
 set INCLUDE=%INCLUDE%;%OPENSSL_ROOT_DIR%/include
 ::mkdir build
 ::call perl Configure VC-WIN32 no-asm --prefix=%OPENSSL_ROOT_DIR%\build enable-static-engine
