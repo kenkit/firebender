@@ -34,14 +34,16 @@ mv  %CURL%\bin\libcurl.dll Debug\
 echo "Finished"
 
 
-curl -f -L %OPEN_SSL_ZIP% -o openssl-1.0.2m.tar.gz || exit 1
-echo "Finished downloading opnessl extracting"
-echo "*******************************************************"
-call 7z  -o. x openssl-1.0.2m.tar.gz -y  && 7z  -o. x   openssl-1.0.2m.tar -y 
-dir .
+::curl -f -L %OPEN_SSL_ZIP% -o openssl-1.0.2m.tar.gz || exit 1
+::echo "Finished downloading opnessl extracting"
+::echo "*******************************************************"
+::call 7z  -o. x openssl-1.0.2m.tar.gz -y  && 7z  -o. x   openssl-1.0.2m.tar -y 
+::dir .
 echo "Building opnessl "
-cd  openssl*
-mkdir build
+appveyor DownloadFile http://cygwin.com/setup-%CYG_ARCH%.exe -FileName setup.exe
+setup.exe -gqnNdO -R "%CYG_ROOT%" -s "%CYG_MIRROR%" -l "%CYG_CACHE%" -P make,git,gcc-core,gcc-g++,ocaml,ocaml-camlp4,ocaml-compiler-libs,libncurses-devel,unzip,libmpfr-devel,patch,flexdll,libglpk-devel,openssl
+::cd  openssl*
+::mkdir build
 ::call perl Configure VC-WIN32 no-asm --prefix=dist enable-static-engine
 ::call ms\do_ms.bat
 ::nmake -f ms/nt.mak
