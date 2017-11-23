@@ -10,7 +10,7 @@ set BOOST_ROOT= C:/Libraries/boost_1_60_0
 set BOOST_LIBRARIES= %BOOST_ROOT%/lib32-msvc-14.0
 
 call "C:\Program Files (x86)\Microsoft Visual Studio 14.0\VC\vcvarsall.bat" x86 
-set CYG_ROOT=C:/cygwin/bin
+set CYG_ROOT=C:/cygwin/
 set CYG_CACHE=C:/cygwin/var/cache/setup
 set CYG_MIRROR=http://mirrors.kernel.org/sourceware/cygwin/
 set CYG_ARCH=x86
@@ -25,6 +25,7 @@ cp c:\MinGW\bin\mingw32-make.exe c:\MinGW\bin\make.exe
 appveyor DownloadFile http://cygwin.com/setup-%CYG_ARCH%.exe -FileName setup.exe
 setup.exe -gqnNdO -R "%CYG_ROOT%" -s "%CYG_MIRROR%" -l "%CYG_CACHE%" -P make,git,gcc-core,gcc-g++,ocaml,ocaml-camlp4,ocaml-compiler-libs,libncurses-devel,unzip,libmpfr-devel,patch,flexdll,libglpk-devel,openssl-devel
 %CYG_ROOT%/bin/bash -lc "cygcheck -dc cygwin gcc-core"
+
 echo "Instlaling eschalot"
 cd %PROJECT_DIR% 
 call git clone https://github.com/ReclaimYourPrivacy/eschalot.git
