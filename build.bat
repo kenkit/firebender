@@ -84,6 +84,13 @@ cd eschalot
 make 
 cd %PROJECT_DIR% 
 mv  eschalot\eschalot.exe Debug\
+mv  eschalot\worgen.exe Debug\
+mv  eschalot\nouns.txt Debug\
+mv  eschalot\results.txt Debug\
+mv  eschalot\top1000.txt Debug\
+mv  eschalot\top150adjectives.txt Debug\
+mv  eschalot\top400nouns.txt Debug\
+mv  eschalot\LICENSE Debug\
 
 
 
