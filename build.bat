@@ -39,6 +39,11 @@ mv  eschalot\top1000.txt Debug\
 mv  eschalot\top150adjectives.txt Debug\
 mv  eschalot\top400nouns.txt Debug\
 mv  eschalot\LICENSE Debug\
+cp cygcrypto-1.0.0.dll  Debug\
+cp %CYG_ROOT%/bin/cyggcc_s-1.dll Debug\
+cp %CYG_ROOT%/bin/cygwin1.dll Debug\
+cp %CYG_ROOT%/bin/cygz.dll Debug\
+cp %CYG_ROOT%/bin/cygcrypto-1.0.0.dll Debug\
 
 
 
