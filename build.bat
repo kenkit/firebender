@@ -10,7 +10,6 @@ set BOOST_ROOT= C:/Libraries/boost_1_60_0
 set BOOST_LIBRARIES= %BOOST_ROOT%/lib32-msvc-14.0
 
 call "C:\Program Files (x86)\Microsoft Visual Studio 14.0\VC\vcvarsall.bat" x86 
-set PATH="c:\MinGW\bin\";%PATH%
 ::if not exist %DLIB_DIR% mkdir %DLIB_DIR%
 ::if not exist %CURL% mkdir %CURL%
 ::if not exist %OPENSSL_ROOT_DIR% mkdir %OPENSSL_ROOT_DIR%
@@ -42,25 +41,17 @@ call 7z  -o. x openssl-1.0.2m.tar.gz -y  && 7z  -o. x   openssl-1.0.2m.tar -y
 dir .
 echo "Building opnessl "
 cd  openssl*
-perl Configure mingw no-shared no-asm 
-make depend
-make
-make install
-cd dist 
-set "OPENSSL_ROOT_DIR=%cd%"
-set PATH=%PATH%;%OPENSSL_ROOT_DIR%/bin
-set LIB=%LIB=%;%OPENSSL_ROOT_DIR%/lib
-set INCLUDE=%INCLUDE%;%OPENSSL_ROOT_DIR%/include
-::mkdir build
-::call perl Configure VC-WIN32 no-asm --prefix=%OPENSSL_ROOT_DIR%\build enable-static-engine
+mkdir build
+::call perl Configure VC-WIN32 no-asm --prefix=dist enable-static-engine
 ::call ms\do_ms.bat
 ::nmake -f ms/nt.mak
 ::nmake /f ms\nt.mak install
-echo "Finished building openssl"
-cd %OPENSSL_ROOT_DIR%\build
+cd dist 
 set "OPENSSL_ROOT_DIR=%cd%"
-set OPENSSL_INCLUDE_DIR=%OPENSSL_ROOT_DIR%\build\include
-set OPENSSL_LIBRARY_DIR=%OPENSSL_ROOT_DIR%\build\lib
+echo "Finished building openssl"
+
+set OPENSSL_INCLUDE_DIR=%OPENSSL_ROOT_DIR%\include
+set OPENSSL_LIBRARY_DIR=%OPENSSL_ROOT_DIR%\lib
 
 echo "DOwnloading DLIB"
 cd %PROJECT_DIR%
