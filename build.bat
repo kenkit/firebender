@@ -10,11 +10,11 @@ set BOOST_ROOT= C:/Libraries/boost_1_60_0
 set BOOST_LIBRARIES= %BOOST_ROOT%/lib32-msvc-14.0
 
 call "C:\Program Files (x86)\Microsoft Visual Studio 14.0\VC\vcvarsall.bat" x86 
-set CYG_ROOT=C:/cygwin
+set CYG_ROOT=C:/cygwin/bin
 set CYG_CACHE=C:/cygwin/var/cache/setup
 set CYG_MIRROR=http://mirrors.kernel.org/sourceware/cygwin/
 set CYG_ARCH=x86
-
+set PATH=%PATH%;C:/cygwin/bin
 ::if not exist %DLIB_DIR% mkdir %DLIB_DIR%
 ::if not exist %CURL% mkdir %CURL%
 ::if not exist %OPENSSL_ROOT_DIR% mkdir %OPENSSL_ROOT_DIR%
@@ -44,10 +44,6 @@ echo "Finished"
 ::echo "*******************************************************"
 ::call 7z  -o. x openssl-1.0.2m.tar.gz -y  && 7z  -o. x   openssl-1.0.2m.tar -y 
 ::dir .
-echo "Building opnessl "
-appveyor DownloadFile http://cygwin.com/setup-%CYG_ARCH%.exe -FileName setup.exe
-setup.exe -gqnNdO -R "%CYG_ROOT%" -s "%CYG_MIRROR%" -l "%CYG_CACHE%" -P make,git,gcc-core,gcc-g++,ocaml,ocaml-camlp4,ocaml-compiler-libs,libncurses-devel,unzip,libmpfr-devel,patch,flexdll,libglpk-devel,openssl
-%CYG_ROOT%/bin/bash -lc "cygcheck -dc cygwin gcc-core
 
 ::cd  openssl*
 ::mkdir build
@@ -80,7 +76,9 @@ cd ..\
 set DLIB_DIR=%DLIB_DIR%\build\dist
 echo "Finished"
 
-
+appveyor DownloadFile http://cygwin.com/setup-%CYG_ARCH%.exe -FileName setup.exe
+setup.exe -gqnNdO -R "%CYG_ROOT%" -s "%CYG_MIRROR%" -l "%CYG_CACHE%" -P make,git,gcc-core,gcc-g++,ocaml,ocaml-camlp4,ocaml-compiler-libs,libncurses-devel,unzip,libmpfr-devel,patch,flexdll,libglpk-devel,openssl
+%CYG_ROOT%/bin/bash -lc "cygcheck -dc cygwin gcc-core
 
 echo "Instlaling jsonpp"
 cd %PROJECT_DIR% 
@@ -92,7 +90,7 @@ echo "Instlaling eschalot"
 cd %PROJECT_DIR% 
 call git clone https://github.com/ReclaimYourPrivacy/eschalot.git
 cd eschalot
-%CYG_ROOT%/bin/bash -lc " make"
+make
 cd %PROJECT_DIR% 
 mv  eschalot\eschalot.exe Debug\
 mv  eschalot\worgen.exe Debug\
