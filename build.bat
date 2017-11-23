@@ -10,6 +10,11 @@ set BOOST_ROOT= C:/Libraries/boost_1_60_0
 set BOOST_LIBRARIES= %BOOST_ROOT%/lib32-msvc-14.0
 
 call "C:\Program Files (x86)\Microsoft Visual Studio 14.0\VC\vcvarsall.bat" x86 
+set CYG_ROOT=C:/cygwin
+set CYG_CACHE=C:/cygwin/var/cache/setup
+set CYG_MIRROR=http://mirrors.kernel.org/sourceware/cygwin/
+set CYG_ARCH=x86
+
 ::if not exist %DLIB_DIR% mkdir %DLIB_DIR%
 ::if not exist %CURL% mkdir %CURL%
 ::if not exist %OPENSSL_ROOT_DIR% mkdir %OPENSSL_ROOT_DIR%
