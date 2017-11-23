@@ -14,6 +14,8 @@ set PATH=%PATH%;"c:\MinGW\bin\"
 ::if not exist %CURL% mkdir %CURL%
 ::if not exist %OPENSSL_ROOT_DIR% mkdir %OPENSSL_ROOT_DIR%
 
+cp c:\MinGW\bin\mingw32-make.exe c:\MinGW\bin\make.exe
+
 cd %PROJECT_DIR%
 curl -f -L %LIB_CURL_ZIP% -o curl-7.56.1.zip  || exit 1
 echo "Finished downloading libcurl extracting"
@@ -40,7 +42,9 @@ dir .
 echo "Building opnessl "
 cd  openssl*
 perl Configure mingw no-shared no-asm 
-mingw32-make.exe mingw32-make.exe && mingw32-make.exe install
+make depend
+make
+make install
 cd dist 
 set "OPENSSL_ROOT_DIR=%cd%"
 set PATH=%PATH%;%OPENSSL_ROOT_DIR%/bin
