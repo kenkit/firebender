@@ -1,3 +1,4 @@
+set PATH=
 set DLIB_ZIP=http://dlib.net/files/dlib-19.7.zip 
 set OPEN_SSL_ZIP=https://www.openssl.org/source/openssl-1.0.2m.tar.gz
 set LIB_CURL_ZIP=https://curl.haxx.se/download/curl-7.56.1.zip
@@ -8,6 +9,7 @@ set DLIB_DIR=dlib-19.7
 
 set BOOST_ROOT= C:/Libraries/boost_1_60_0
 set BOOST_LIBRARIES= %BOOST_ROOT%/lib32-msvc-14.0
+
 call "C:\Program Files (x86)\Microsoft Visual Studio 14.0\VC\vcvarsall.bat" x86 
 set PATH=%PATH%;"c:\MinGW\bin\"
 ::if not exist %DLIB_DIR% mkdir %DLIB_DIR%
