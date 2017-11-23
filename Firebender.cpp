@@ -276,16 +276,21 @@ std::string sendjobresult=local_db_connect(send_j);
 std::cout<<sendjobresult;
 return 0;
 }
-	std::cout<<"Current User:"<<cur_user<<" status:"<<status<<std::endl;
+	//std::cout<<"Current User:"<<cur_user<<" status:"<<status<<std::endl;
 
 
 
 
 return status;
 }
-
 int main(void)
 {
+std::cout<<"Starting firebender client...."<<std::endl;
+dlib::sleep(1000);
+clear() ;
+std::cout<<"Reading settings..."<<std::endl;
+dlib::sleep(1000);
+clear() ;
 ifstream mysettings("settings.json");
 
 
@@ -294,19 +299,34 @@ std::string settings((std::istreambuf_iterator<char>(mysettings)),
 
 mysettings.close();
 
-
+dlib::sleep(1000);
+clear() ;
+std::cout<<"Connecting to server..."<<std::endl;
 while(1){
+	clear() ;
 	int status=do_job(settings);
-if(status!=0&&status!=1)
-break;
-dlib::sleep(2000);
+	
+		if(status==1)
+			std::cout<<"Waiting for jobs from server :)"<<std::endl;
 
-}
+		else if(status==8)
+			std::cout<<"This job does not exist :("<<std::endl;
+
+		else if(status==9)
+			std::cout<<"I failed on a job, it's been taken away :("<<std::endl;
+		else if(status==7)
+		{
+			std::cout<<"Invalid hash supplied to server :("<<std::endl;
+			std::cout<<"Infraction noted :("<<std::endl;
+		}
+
+	dlib::sleep(2000);	
+
+	if(status!=0&&status!=1)
+	break;
+	}
 
 
-	std::cin.get();
-
-	return 0;
 }
 
 #ifdef _WIN32
