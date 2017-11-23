@@ -56,13 +56,12 @@ echo "*******************************************************"
 7z  -o.  x dlib-19.7.zip   -y
 dir .
 echo "Building dlib"
-cd %DLIB_DIR%
-set "DLIB_DIR=%cd%"
-mkdir %DLIB_DIR%\build
-cd %DLIB_DIR%\build
+cd  %DLIB_DIR%
+mkdir build
+cd build
 cmake -DCMAKE_INSTALL_PREFIX=dist ..\  
 msbuild INSTALL.vcxproj /p:Configuration=Debug /p:Platform=x86 /m
-
+cd dist 
 set "DLIB_DIR=%cd%"
 echo "Finished"
 
