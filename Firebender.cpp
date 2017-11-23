@@ -314,6 +314,8 @@ while(1){
 
 		else if(status==9)
 			std::cout<<"I failed on a job, it's been taken away :("<<std::endl;
+		else if(status==3)
+			std::cout<<"Check your api info on the server :("<<std::endl;
 		else if(status==7)
 		{
 			std::cout<<"Invalid hash supplied to server :("<<std::endl;
@@ -325,7 +327,7 @@ while(1){
 	if(status!=0&&status!=1)
 	break;
 	}
-
+cin.get();
 
 }
 
