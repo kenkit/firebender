@@ -9,7 +9,7 @@
 
 - Automatic builds are not available yet. But am working on  this atm.
 
-- Automatic Builds are working.
+- I am working on intergrating eschalot into the project automatically.
 
 ## [[DOWNLOAD]][1]
 
