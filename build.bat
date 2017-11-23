@@ -39,7 +39,7 @@ call 7z  -o. x openssl-1.0.2m.tar.gz -y  && 7z  -o. x   openssl-1.0.2m.tar -y
 dir .
 echo "Building opnessl "
 cd  openssl*
-./Configure --prefix=$PWD/dist no-idea no-mdc2 no-rc5 shared mingw
+perl Configure mingw no-shared no-asm 
 mingw32-make.exe mingw32-make.exe && mingw32-make.exe install
 cd dist 
 set "OPENSSL_ROOT_DIR=%cd%"
