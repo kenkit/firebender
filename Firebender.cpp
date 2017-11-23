@@ -329,7 +329,7 @@ while(1){
 
 
 		dlib::sleep(2000);
-		if(status!=0&&status!=1)
+		if(!(status!=0&&status!=1))
 		clear() ;
 
 	if(status!=0&&status!=1)
