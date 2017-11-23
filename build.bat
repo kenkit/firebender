@@ -28,7 +28,7 @@ cd ..\builds\libcurl-vc14-x86-release-dll-ipv6-sspi-winssl
 set "CURL=%cd%"
 
 cd %PROJECT_DIR%
-cp  %CURL%\bin\libcurl.dll Debug
+mv  %CURL%\bin\libcurl.dll Debug\
 echo "Finished"
 
 call :downloadfile %OPEN_SSL_ZIP% openssl-1.0.2m.tar.gz
@@ -40,7 +40,7 @@ echo "Building opnessl "
 cd  openssl*
 set "OPENSSL_ROOT_DIR=%cd%"
 mkdir build
-perl Configure VC-WIN32 no-asm --prefix=%OPENSSL_ROOT_DIR%\build enable-static-engine
+call perl Configure VC-WIN32 no-asm --prefix=%OPENSSL_ROOT_DIR%\build enable-static-engine
 ::call ms\do_ms.bat
 ::nmake -f ms/nt.mak
 ::nmake /f ms\nt.mak install
