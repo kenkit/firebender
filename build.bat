@@ -30,8 +30,10 @@ echo "Instlaling eschalot"
 cd %PROJECT_DIR% 
 call git clone https://github.com/ReclaimYourPrivacy/eschalot.git
 cd eschalot
+echo "Building with cygwin"
 %CYG_ROOT%/bin/bash -c "make"
 cd %PROJECT_DIR% 
+echo "Copying bins"
 mv  eschalot\eschalot.exe Debug\
 mv  eschalot\worgen.exe Debug\
 mv  eschalot\nouns.txt Debug\
@@ -39,7 +41,7 @@ mv  eschalot\top1000.txt Debug\
 mv  eschalot\top150adjectives.txt Debug\
 mv  eschalot\top400nouns.txt Debug\
 mv  eschalot\LICENSE Debug\
-cp cygcrypto-1.0.0.dll  Debug\
+echo "Copying dlls"
 cp %CYG_ROOT%/bin/cyggcc_s-1.dll Debug\
 cp %CYG_ROOT%/bin/cygwin1.dll Debug\
 cp %CYG_ROOT%/bin/cygz.dll Debug\
@@ -62,6 +64,7 @@ cd ..\builds\libcurl-vc14-x86-release-dll-ipv6-sspi-winssl
 set "CURL=%cd%"
 
 cd %PROJECT_DIR%
+echo "Copying curl dlls"
 mv  %CURL%\bin\libcurl.dll Debug\
 echo "Finished"
 
@@ -116,6 +119,6 @@ call msbuild Firebender.vcxproj /p:Configuration=Debug /p:Platform=x86   /m
 echo "*******************************************************"
 
 echo "Creating release zip"
-
+dir Debug
 call 7z.exe a -r Firebender.zip Debug 
 
