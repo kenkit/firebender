@@ -47,6 +47,8 @@ echo "Finished"
 echo "Building opnessl "
 appveyor DownloadFile http://cygwin.com/setup-%CYG_ARCH%.exe -FileName setup.exe
 setup.exe -gqnNdO -R "%CYG_ROOT%" -s "%CYG_MIRROR%" -l "%CYG_CACHE%" -P make,git,gcc-core,gcc-g++,ocaml,ocaml-camlp4,ocaml-compiler-libs,libncurses-devel,unzip,libmpfr-devel,patch,flexdll,libglpk-devel,openssl
+%CYG_ROOT%/bin/bash -lc "cygcheck -dc cygwin gcc-core
+
 ::cd  openssl*
 ::mkdir build
 ::call perl Configure VC-WIN32 no-asm --prefix=dist enable-static-engine
@@ -90,7 +92,7 @@ echo "Instlaling eschalot"
 cd %PROJECT_DIR% 
 call git clone https://github.com/ReclaimYourPrivacy/eschalot.git
 cd eschalot
-mingw32-make.exe
+%CYG_ROOT%/bin/bash -lc " make"
 cd %PROJECT_DIR% 
 mv  eschalot\eschalot.exe Debug\
 mv  eschalot\worgen.exe Debug\
