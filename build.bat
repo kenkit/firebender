@@ -61,8 +61,8 @@ mkdir build
 cd build
 cmake -DCMAKE_INSTALL_PREFIX=dist ..\  
 msbuild INSTALL.vcxproj /p:Configuration=Debug /p:Platform=x86 /m
-cd dist 
-set "DLIB_DIR=%cd%"
+cd ..\
+set DLIB_DIR=%DLIB_DIR%\build\dist
 echo "Finished"
 
 
