@@ -118,7 +118,8 @@ echo "Building app"
 call msbuild Firebender.vcxproj /p:Configuration=Debug /p:Platform=x86   /m
 echo "*******************************************************"
 
+
 echo "Creating release zip"
 dir Debug
-call 7z.exe a -r Firebender.zip Debug 
+call 7z.exe a -r Firebender.zip C:\projects\firebender\Debug\
 
