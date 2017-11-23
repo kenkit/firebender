@@ -121,6 +121,6 @@ echo "*******************************************************"
 
 echo "Creating release zip"
 dir Debug
-del dlib-19.7 /y
+
 call 7z.exe a -bb3 Firebender.zip Debug\ 
 
