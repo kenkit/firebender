@@ -18,12 +18,12 @@ cd %PROJECT_DIR%
 call :downloadfile %LIB_CURL_ZIP% curl-7.56.1.zip  
 echo "Finished downloading libcurl extracting"
 echo "*******************************************************"
-7z  -o. x curl-7.56.1.zip   -y 
+call 7z  -o. x curl-7.56.1.zip   -y 
 echo "Building libcurl"
 dir %CURL%
 cd %CURL%
 cd winbuild
-nmake /f Makefile.vc mode=dll VC=14
+call nmake /f Makefile.vc mode=dll VC=14
 cd ..\builds\libcurl-vc14-x86-release-dll-ipv6-sspi-winssl
 set "CURL=%cd%"
 
@@ -34,7 +34,7 @@ echo "Finished"
 call :downloadfile %OPEN_SSL_ZIP% openssl-1.0.2m.tar.gz
 echo "Finished downloading opnessl extracting"
 echo "*******************************************************"
-7z  -o. x openssl-1.0.2m.tar.gz -y  && 7z  -o. x   openssl-1.0.2m.tar -y 
+call 7z  -o. x openssl-1.0.2m.tar.gz -y  && 7z  -o. x   openssl-1.0.2m.tar -y 
 dir .
 echo "Building opnessl "
 cd  openssl*
@@ -63,7 +63,7 @@ set "DLIB_DIR2=%cd%"
 mkdir build
 cd build
 cmake -DCMAKE_INSTALL_PREFIX=dist ..\  
-msbuild INSTALL.vcxproj /p:Configuration=Debug /p:Platform=x86 /m
+call msbuild INSTALL.vcxproj /p:Configuration=Debug /p:Platform=x86 /m
 cd ..\
 set DLIB_DIR=%DLIB_DIR%\build\dist
 echo "Finished"
@@ -72,7 +72,7 @@ echo "Finished"
 
 echo "Instlaling jsonpp"
 cd %PROJECT_DIR% 
-git clone https://github.com/nlohmann/json.git
+call git clone https://github.com/nlohmann/json.git
 cd json\src
 set "NLOHOMANN_JSON=%cd%"
 
@@ -81,12 +81,11 @@ echo "boost"
 
 cd %PROJECT_DIR% 
 echo "Building app"
-msbuild Firebender.vcxproj /p:Configuration=Debug /p:Platform=x86   /m
+call msbuild Firebender.vcxproj /p:Configuration=Debug /p:Platform=x86   /m
 echo "*******************************************************"
 
 echo "Creating release zip"
-::7z.exe a -r Firebender.zip Debug 2> nul
-7z a  Firebender.zip Debug 
+call 7z.exe a -r Firebender.zip Debug 
 
 :downloadfile
 :: ----------------------------------------------------------------------
