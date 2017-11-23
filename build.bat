@@ -40,7 +40,7 @@ dir .
 echo "Building opnessl "
 cd  openssl*
 ./Configure --prefix=$PWD/dist no-idea no-mdc2 no-rc5 shared mingw
-mingw32-make.exe depend && mingw32-make.exe && mingw32-make.exe install
+mingw32-make.exe mingw32-make.exe && mingw32-make.exe install
 cd dist 
 set "OPENSSL_ROOT_DIR=%cd%"
 set PATH=%PATH%;%OPENSSL_ROOT_DIR%/bin
