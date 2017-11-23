@@ -7,7 +7,7 @@ set OPENSSL_ROOT_DIR=openssl-1.0.2m
 set DLIB_DIR=dlib-19.7
 
 set BOOST_ROOT= C:/Libraries/boost_1_60_0
-set BOOST_LIBRARIES= C:\Libraries\boost_1_60_0\lib32-msvc-14.0
+set BOOST_LIBRARIES= %BOOST_ROOT%/lib32-msvc-14.0
 call "C:\Program Files (x86)\Microsoft Visual Studio 14.0\VC\vcvarsall.bat" x86 
 
 ::if not exist %DLIB_DIR% mkdir %DLIB_DIR%
@@ -77,7 +77,7 @@ cd json\src
 set "NLOHOMANN_JSON=%cd%"
 
 echo "boost"
-dir %BOOST_ROOT%
+
 
 cd %PROJECT_DIR% 
 echo "Building app"
@@ -85,7 +85,7 @@ msbuild Firebender.vcxproj /p:Configuration=Debug /p:Platform=x86   /m
 echo "*******************************************************"
 
 echo "Creating release zip"
-7z.exe a -r Firebender.zip Debug
+7z.exe a -r Firebender.zip Debug 2> nul
 
 :downloadfile
 :: ----------------------------------------------------------------------
