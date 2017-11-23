@@ -308,22 +308,29 @@ while(1){
 	
 		if(status==1)
 			std::cout<<"Waiting for jobs from server :)"<<std::endl;
-
-		else if(status==8)
-			std::cout<<"This job does not exist :("<<std::endl;
-
-		else if(status==9)
-			std::cout<<"I failed on a job, it's been taken away :("<<std::endl;
+		if(status==2)
+			std::cout<<"Duplicate onion address :)"<<std::endl;
 		else if(status==3)
 			std::cout<<"Check your api info on the server :("<<std::endl;
+		else if(status==4)
+			std::cout<<"Malformed json response :("<<std::endl;		
+		else if(status==6)
+			std::cout<<"Invalid length of json object :("<<std::endl;					
 		else if(status==7)
 		{
 			std::cout<<"Invalid hash supplied to server :("<<std::endl;
 			std::cout<<"Infraction noted :("<<std::endl;
 		}
+		else if(status==8)
+			std::cout<<"This job does not exist :("<<std::endl;
 
-	dlib::sleep(2000);	
-	clear() ;	
+		else if(status==9)
+			std::cout<<"I failed on a job, it's been taken away :("<<std::endl;
+
+
+		dlib::sleep(2000);
+		clear() ;
+
 	if(status!=0&&status!=1)
 	break;
 	}
