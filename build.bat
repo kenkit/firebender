@@ -5,6 +5,7 @@ set "PROJECT_DIR=%cd%"
 set CURL=curl-7.56.1
 set OPENSSL_ROOT_DIR=openssl-1.0.2m
 set DLIB_DIR=dlib-19.7
+
 set BOOST_ROOT= C:/Libraries/boost_1_60_0
 call "C:\Program Files (x86)\Microsoft Visual Studio 14.0\VC\vcvarsall.bat" x86 
 
@@ -57,6 +58,7 @@ echo "*******************************************************"
 dir .
 echo "Building dlib"
 cd  %DLIB_DIR%
+set "DLIB_DIR2=%cd%"
 mkdir build
 cd build
 cmake -DCMAKE_INSTALL_PREFIX=dist ..\  
