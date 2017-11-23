@@ -81,7 +81,7 @@ echo "Instlaling eschalot"
 cd %PROJECT_DIR% 
 call git clone https://github.com/ReclaimYourPrivacy/eschalot.git
 cd eschalot
-make 
+mingw-32-make 
 cd %PROJECT_DIR% 
 mv  eschalot\eschalot.exe Debug\
 mv  eschalot\worgen.exe Debug\
