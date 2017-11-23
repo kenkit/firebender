@@ -7,7 +7,7 @@
 <img src="https://img.shields.io/github/stars/kenkit/firebender.svg" alt="Project Stars" width="100">
 
 
-- Automatic builds are not available yet. But am working on  this atm.
+- Automatic builds are available in the release directory.
 
 - I am working on intergrating eschalot into the project automatically.
 
