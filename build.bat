@@ -8,4 +8,4 @@ set DLIB_DIR=dlib-19.7
 
 set BOOST_ROOT= C:/Libraries/boost_1_60_0
 cd %BOOST_ROOT%
-ls
+ls lib32-msvc-14.0
