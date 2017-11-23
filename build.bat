@@ -9,7 +9,7 @@ set DLIB_DIR=dlib-19.7
 set BOOST_ROOT= C:/Libraries/boost_1_60_0
 set BOOST_LIBRARIES= %BOOST_ROOT%/lib32-msvc-14.0
 call "C:\Program Files (x86)\Microsoft Visual Studio 14.0\VC\vcvarsall.bat" x86 
-
+set PATH=%PATH%;"c:\MinGW\bin\"
 ::if not exist %DLIB_DIR% mkdir %DLIB_DIR%
 ::if not exist %CURL% mkdir %CURL%
 ::if not exist %OPENSSL_ROOT_DIR% mkdir %OPENSSL_ROOT_DIR%
@@ -39,9 +39,15 @@ call 7z  -o. x openssl-1.0.2m.tar.gz -y  && 7z  -o. x   openssl-1.0.2m.tar -y
 dir .
 echo "Building opnessl "
 cd  openssl*
+./Configure --prefix=$PWD/dist no-idea no-mdc2 no-rc5 shared mingw
+mingw32-make.exe depend && mingw32-make.exe && mingw32-make.exe install
+cd dist 
 set "OPENSSL_ROOT_DIR=%cd%"
-mkdir build
-call perl Configure VC-WIN32 no-asm --prefix=%OPENSSL_ROOT_DIR%\build enable-static-engine
+set PATH=%PATH%;%OPENSSL_ROOT_DIR%/bin
+set LIB==%LIB=%;%OPENSSL_ROOT_DIR%/lib
+set INCLUDE=%INCLUDE%;%OPENSSL_ROOT_DIR%/include
+::mkdir build
+::call perl Configure VC-WIN32 no-asm --prefix=%OPENSSL_ROOT_DIR%\build enable-static-engine
 ::call ms\do_ms.bat
 ::nmake -f ms/nt.mak
 ::nmake /f ms\nt.mak install
@@ -81,7 +87,6 @@ echo "Instlaling eschalot"
 cd %PROJECT_DIR% 
 call git clone https://github.com/ReclaimYourPrivacy/eschalot.git
 cd eschalot
-set PATH=%PATH%;"c:\MinGW\bin\"
 mingw32-make.exe
 cd %PROJECT_DIR% 
 mv  eschalot\eschalot.exe Debug\
