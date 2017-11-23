@@ -77,7 +77,14 @@ call git clone https://github.com/nlohmann/json.git
 cd json\src
 set "NLOHOMANN_JSON=%cd%"
 
-echo "boost"
+echo "Instlaling eschalot"
+cd %PROJECT_DIR% 
+call git clone https://github.com/ReclaimYourPrivacy/eschalot.git
+cd eschalot
+make 
+cd %PROJECT_DIR% 
+mv  eschalot\eschalot.exe Debug\
+
 
 
 cd %PROJECT_DIR% 
