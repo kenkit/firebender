@@ -14,7 +14,7 @@
 
 Download the app and modify your settings.json to point to your account nfo. open the **Api page** on our **server** and copy the contents of that **text box** to your **settings.json**. 
 Add your tor_port to the settings so that Firebender can connect through your tor client.
-Use your tor port(This app connects to our site using tor)
+Use the tor port which your tor browser listens to (This app connects to our site using tor)
 
 After setting up tor, 
 
@@ -25,7 +25,6 @@ Put settings.json in the same directory as **Firebender.exe**
 ![](https://i.imgur.com/Rbb0UIn.jpg)
 
 
-Then you have to either download or build **eschalot.exe** and put it in the same directory as **Firebender.exe**
 
 Then launch Firebender after starting tor.
 
