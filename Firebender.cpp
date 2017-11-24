@@ -328,7 +328,7 @@ while(1){
 			std::cout<<"I failed on a job, it's been taken away :("<<std::endl;
 
 
-		dlib::sleep(2000);
+		dlib::sleep(60000);
 		if(!(status!=0&&status!=1))
 		clear() ;
 
