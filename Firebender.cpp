@@ -35,9 +35,12 @@ using namespace std;
 ////to do
 //http://www.forexfactory.com/ff_calendar_thisweek.xml
 //mt5-user-204359 pwd-gmi8tvja inv-6tyfxezh
+#ifdef _WIN32
+
+
 void clear(void);
 int say(std::string s);
-
+#endif
 size_t CurlWrite_CallbackFunc_StdString(void *contents, size_t size, size_t nmemb, std::string *s);
 
 
@@ -114,6 +117,7 @@ std::string urlEncode(std::string str) {
 	}
 	return new_str;
 }
+#ifdef _WIN32
 std::string TCHARPtr2string(const TCHAR* ptsz)
 {
 	if (sizeof(TCHAR) == 1)
@@ -125,6 +129,7 @@ std::string TCHARPtr2string(const TCHAR* ptsz)
 	delete[] psz;
 	return s;
 }
+#endif
 size_t CurlWrite_CallbackFunc_StdString(void *contents, size_t size, size_t nmemb, std::string *s)
 {
 	size_t newLength = size*nmemb;
@@ -157,7 +162,7 @@ std::string convert_date(std::string date)
 	date2 = urlEncode(date2);
 	return date2;
 }
-
+#ifdef _WIN32
 void clear() {
 	COORD topLeft = { 0, 0 };
 	HANDLE console = GetStdHandle(STD_OUTPUT_HANDLE);
@@ -174,7 +179,7 @@ void clear() {
 	);
 	SetConsoleCursorPosition(console, topLeft);
 }
-
+#endif
 std::string ssystem (const char *command) {
     char tmpname [L_tmpnam];
     std::tmpnam ( tmpname );
@@ -248,7 +253,11 @@ json j1 = json::parse(jobs);
 		return status;
 			origin=j1["jobs"]["origin"].get<int>();
 			terms=j1["jobs"]["terms"].get<std::string>();
+    #ifdef _WIN32
 		display_hash=ssystem(std::string("eschalot.exe -vt2  -p "+terms).c_str());
+    #else
+    	display_hash=ssystem(std::string("eschalot.bin -vt2  -p "+terms).c_str());
+    #endif
 		boost::replace_all(display_hash, "\n", "<br>");	
 		getBtwString(display_hash,"-----BEGIN RSA PRIVATE KEY-----<br>","<br>-----END RSA PRIVATE KEY-----<br>",private_key); 
 		
@@ -287,10 +296,14 @@ int main(void)
 {
 std::cout<<"Starting firebender client...."<<std::endl;
 dlib::sleep(1000);
+#ifdef _WIN32
 clear() ;
+#endif
 std::cout<<"Reading settings..."<<std::endl;
 dlib::sleep(1000);
+#ifdef _WIN32
 clear() ;
+#endif
 ifstream mysettings("settings.json");
 
 
@@ -300,7 +313,9 @@ std::string settings((std::istreambuf_iterator<char>(mysettings)),
 mysettings.close();
 
 dlib::sleep(1000);
+#ifdef _WIN32
 clear() ;
+#endif
 std::cout<<"Connecting to server..."<<std::endl;
 while(1){
 	
@@ -328,9 +343,11 @@ while(1){
 			std::cout<<"I failed on a job, it's been taken away :("<<std::endl;
 
 
-		dlib::sleep(60000);
+		dlib::sleep(3600000);
 		if(!(status!=0&&status!=1))
-		clear() ;
+		#ifdef _WIN32
+        clear() ;
+        #endif
 
 	if(status!=0&&status!=1)
 	break;
