@@ -1,4 +1,5 @@
-g++ Firebender.cpp  -std=c++17  -I /home/sysadmin/Desktop/firebender/json/src   -lcurl -ldlib -lboost_system -o  firebender
+git clone https://github.com/nlohmann/json.git
+g++ Firebender.cpp  -std=c++17  -I json/src   -lcurl -ldlib -lboost_system -o  firebender
 cd  eschalot/
 make 
 cd ../
